@@ -233,3 +233,24 @@ a[href="1"]:hover {
   align-items: center;
   justify-content: center;
 }
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .arriba, .about, .datos, .contenedor, .menu {
+    flex-direction: column !important;
+    text-align: center;
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .imagen img, .logo2, .icono, .icono2, .imagenes img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+  }
+
+  .textoizq, .textoder, .textoaba {
+    text-align: center;
+  }
+}
