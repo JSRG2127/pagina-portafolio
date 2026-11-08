@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap">
+<style>
+html{scroll-behavior:smooth;background:#0d0d0d}
+body{margin:0;background:#0d0d0d;color:#f1efec;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#f1efec;text-decoration:none}
+a:hover{color:var(--ac,#E31C1C)}
+::selection{background:var(--ac);color:#0d0d0d}
+textarea::placeholder,input::placeholder{color:#5e5e5e}
+@property --ac{syntax:'<color>';inherits:true;initial-value:#E31C1C}
+body.cc-on,body.cc-on a,body.cc-on button,body.cc-on [data-cursor]{cursor:none}
+</style>
+</helmet>
+<div id="top" style="background:#0d0d0d;color:#f1efec;font-family:'Archivo',Helvetica,sans-serif;min-height:100vh;overflow-x:clip">
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(20px,4vw,56px);background:rgba(13,13,13,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #1d1d1d;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.06em">
+  <a href="#top" style="display:flex;gap:10px;align-items:baseline;font-weight:500"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.02em">JS<span style="color:var(--ac,#E31C1C)">.</span></span></a>
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;gap:28px">
+      <a href="#proyectos" style="color:#f1efec" style-hover="color:var(--ac,#E31C1C)">PROYECTOS</a>
+      <a href="#habilidades" style="color:#f1efec" style-hover="color:var(--ac,#E31C1C)">HABILIDADES</a>
+      <a href="#herramientas" style="color:#f1efec" style-hover="color:var(--ac,#E31C1C)">HERRAMIENTAS</a>
+      <a href="#estudios" style="color:#f1efec" style-hover="color:var(--ac,#E31C1C)">ESTUDIOS</a>
+      <a href="#contacto" style="color:#f1efec" style-hover="color:var(--ac,#E31C1C)">CONTACTO</a>
+    </div>
+  </sc-if>
+  <div style="display:flex;gap:12px;align-items:center">
+    <a href="#contacto" data-magnet="1" style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--ac,#E31C1C);color:#f1efec;transition:background .25s" style-hover="background:var(--ac,#E31C1C);color:var(--aci,#fff)"><span style="width:6px;height:6px;background:var(--ac,#E31C1C);border-radius:50%;box-shadow:0 0 0 3px color-mix(in srgb,var(--ac,#E31C1C) 25%,transparent)"></span>HABLEMOS</a>
+    <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" style="background:none;border:1px solid #333;color:#f1efec;font:inherit;padding:10px 14px;letter-spacing:.06em">{{ menuLabel }}</button>
+    </sc-if>
+  </div>
+</nav>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:45;background:#0d0d0d;padding:110px clamp(20px,4vw,56px) 40px;display:flex;flex-direction:column;gap:6px">
+    <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid #222;font-weight:800;font-size:clamp(36px,10vw,64px);letter-spacing:-.03em;font-variation-settings:'wdth' 80">{{ n.label }}</a>
+    </sc-for>
+  </div>
+</sc-if>
+
+<header data-screen-label="Inicio" data-sec="INICIO" data-accent="#E31C1C" style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px clamp(20px,4vw,56px) 40px;position:relative">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c;margin-bottom:clamp(20px,3vw,36px)">
+    <span><span style="color:var(--ac,#E31C1C)">●</span> DISEÑADOR UX/UI · AUDIOVISUAL · 3D</span>
+  </div>
+  <div style="display:flex;flex-wrap:{{ heroWrap }};align-items:flex-end;justify-content:space-between;gap:clamp(20px,3vw,48px)">
+  <div data-par="1" style="will-change:transform;flex:1 1 0;min-width:0">
+    <h1 style="margin:0;font-weight:800;font-size:clamp(56px,11.5vw,240px);line-height:.84;letter-spacing:-.045em;font-variation-settings:'wdth' 78;text-transform:uppercase">
+      <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-hero="1" style="display:inline-block">Juan</span></span>
+      <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-hero="1" style="display:inline-block">Sebastian<span style="color:var(--ac,#E31C1C)">.</span></span></span>
+    </h1>
+  </div>
+  <div data-reveal="1" style="flex:0 0 clamp(180px,22vw,340px);min-width:0">
+    <div data-tilt="1" data-cursor="1" onMouseEnter="{{ phHeroIn }}" onMouseLeave="{{ phOut }}" style="position:relative;aspect-ratio:389/538;overflow:hidden;background:#141414;border:1px solid #262626;will-change:transform;transition:transform .6s cubic-bezier(.16,1,.3,1)">
+      <img src="assets/foto-inicio.png" alt="Juan Sebastian" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:filter .7s ease,transform 1.1s cubic-bezier(.16,1,.3,1);filter:{{ phHero.filter }};transform:{{ phHero.scale }}">
+      <div style="position:absolute;inset:0;background:var(--ac,#E31C1C);mix-blend-mode:multiply;transition:opacity .7s;opacity:{{ phHero.tint }}"></div>
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(13,13,13,.55) 1px,transparent 1.4px);background-size:4px 4px;transition:opacity .7s;opacity:{{ phHero.grain }}"></div>
+      <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);pointer-events:none"></div>
+      <div style="position:absolute;left:0;right:0;top:0;height:2px;background:var(--ac,#E31C1C);transition:transform .9s cubic-bezier(.16,1,.3,1);transform:{{ phHero.scan }}"></div>
+      <span style="position:absolute;left:12px;top:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:10px;letter-spacing:.08em;color:#f1efec">JS/001</span>
+      <span style="position:absolute;right:12px;bottom:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:10px;letter-spacing:.08em;color:#f1efec">{{ phHero.label }}</span>
+    </div>
+  </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:clamp(28px,4vw,56px);padding-top:24px;border-top:1px solid #262626">
+    <p data-reveal="1" style="margin:0;max-width:620px;font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:#cfcbc6;text-wrap:pretty"><span style="color:#f1efec;font-weight:600">Creador Digital,</span> aprendiendo y practicando el ámbito audiovisual, diseño UI/UX y desarrollo web. Apasionado por la creatividad visual o narrativa y hacerla realidad para crear experiencias digitales funcionales y atractivas.</p>
+    <div style="display:flex;gap:28px;align-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em">
+      <span style="color:#8c8c8c">DISPONIBLE PARA PROYECTOS</span>
+      <a href="#proyectos" data-magnet="1" style="display:inline-flex;align-items:center;justify-content:center;width:96px;height:96px;border-radius:50%;border:1px solid #333;color:#f1efec;transition:border-color .3s,background .3s" style-hover="border-color:var(--ac,#E31C1C);background:var(--ac,#E31C1C);color:var(--aci,#fff)">▼ SCROLL</a>
+    </div>
+  </div>
+</header>
+
+<div data-accent="#E31C1C" style="border-top:1px solid #1d1d1d;border-bottom:1px solid #1d1d1d;padding:22px 0;overflow:hidden">
+  <div data-marquee="1" style="display:flex;width:max-content;align-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:13px;letter-spacing:.1em;color:#8c8c8c;will-change:transform">
+    <sc-for list="{{ marqueeTools }}" as="t" hint-placeholder-count="20">
+      <span style="display:inline-flex;align-items:center;gap:40px;padding-right:40px;white-space:nowrap">{{ t }}<span style="width:6px;height:6px;background:var(--ac,#E31C1C)"></span></span>
+    </sc-for>
+  </div>
+</div>
+
+<section id="proyectos" data-screen-label="01 Proyectos" data-sec="01 — PROYECTOS" data-accent="#E31C1C" style="padding:clamp(80px,10vw,160px) 0 clamp(60px,8vw,120px)">
+  <div style="padding:0 clamp(20px,4vw,56px)">
+    <div style="display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c"><span style="color:var(--ac,#E31C1C)">01</span><span>4 PROYECTOS</span></div>
+    <h2 data-reveal="1" style="margin:16px 0 0;font-weight:800;font-size:clamp(44px,7vw,120px);line-height:.9;letter-spacing:-.04em;font-variation-settings:'wdth' 80">PROYECTOS DESTACADOS</h2>
+  </div>
+  <div style="overflow:hidden;margin:28px 0 clamp(40px,5vw,72px)">
+    <div data-marquee="-1" style="display:flex;width:max-content;will-change:transform">
+      <sc-for list="{{ reps }}" as="r" hint-placeholder-count="8">
+        <span style="display:inline-flex;align-items:center;gap:32px;padding-right:32px;font-weight:800;font-size:clamp(40px,6vw,96px);letter-spacing:-.03em;font-variation-settings:'wdth' 80;color:transparent;-webkit-text-stroke:1px #333;white-space:nowrap">PROYECTOS<span style="width:.18em;height:.18em;background:var(--ac,#E31C1C);display:inline-block"></span></span>
+      </sc-for>
+    </div>
+  </div>
+  <div style="padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column">
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
+      <article data-reveal="1" data-cursor="👀" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,64px);padding:clamp(28px,4vw,48px) 0;border-top:1px solid #262626;cursor:pointer">
+        <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:20px;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c"><span style="display:flex;align-items:center;gap:12px">{{ p.idx }}<sc-if value="{{ p.hasStatus }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:8px;padding:5px 10px;border:1px solid var(--ac,#E31C1C);color:#f1efec"><span data-pulse="1" style="width:6px;height:6px;border-radius:50%;background:var(--ac,#E31C1C)"></span>{{ p.status }}</span></sc-if></span><span>{{ p.type }}</span></div>
+          <h3 style="margin:0;font-weight:800;font-size:clamp(48px,7.5vw,128px);line-height:.88;letter-spacing:-.04em;font-variation-settings:'wdth' 78;transition:color .35s,transform .5s cubic-bezier(.16,1,.3,1);color:{{ p.titleColor }};transform:{{ p.titleShift }}">{{ p.name }}</h3>
+          <p style="margin:0;font-size:clamp(17px,1.4vw,20px);line-height:1.5;color:#cfcbc6;max-width:460px;text-wrap:pretty">{{ p.desc }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ p.tags }}" as="tg" hint-placeholder-count="3">
+              <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;letter-spacing:.08em;padding:7px 11px;border:1px solid #2e2e2e;color:#cfcbc6">{{ tg }}</span>
+            </sc-for>
+          </div>
+          <span style="margin-top:auto;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.1em;color:{{ p.titleColor }};transition:color .35s">VER PROYECTO →</span>
+        </div>
+        <div style="flex:1.3 1 420px;min-width:0;aspect-ratio:16/10;overflow:hidden;position:relative;background:#141414;border:1px solid #222">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#151515 0 12px,#1a1a1a 12px 24px);transition:transform .9s cubic-bezier(.16,1,.3,1);transform:{{ p.imgScale }}"></div>
+          <div style="position:absolute;inset:0;background-repeat:no-repeat;transition:transform .9s cubic-bezier(.16,1,.3,1),filter .7s;background-size:{{ p.coverSize }};background-color:{{ p.coverBg }};background-position:{{ p.coverPos }};background-image:{{ p.coverImg }};transform:{{ p.imgScale }};filter:{{ p.coverFilter }}"></div>
+          <div style="position:absolute;inset:0;background:var(--ac,#E31C1C);mix-blend-mode:multiply;transition:opacity .5s;opacity:{{ p.tint }}"></div>
+          <sc-if value="{{ p.noCover }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:16px;bottom:14px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;letter-spacing:.08em;color:#8c8c8c">[ {{ p.shot }} ]</span></sc-if>
+          <span style="position:absolute;right:16px;top:14px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;letter-spacing:.08em;color:#8c8c8c">{{ p.idx }}</span>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section id="habilidades" data-screen-label="02 Habilidades" data-sec="02 — HABILIDADES" data-accent="#FFCC00" style="padding:clamp(60px,8vw,120px) 0">
+  <div style="padding:0 clamp(20px,4vw,56px)">
+    <div style="display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c;border-top:1px solid #262626;padding-top:20px"><span style="color:var(--ac,#E31C1C)">02</span><span>5 ÁREAS</span></div>
+    <h2 data-reveal="1" style="margin:16px 0 0;font-weight:800;font-size:clamp(44px,7vw,120px);line-height:.9;letter-spacing:-.04em;font-variation-settings:'wdth' 80">HABILIDADES</h2>
+  </div>
+  <div style="overflow:hidden;margin:28px 0 clamp(40px,5vw,72px)">
+    <div data-marquee="1" style="display:flex;width:max-content;will-change:transform">
+      <sc-for list="{{ reps }}" as="r" hint-placeholder-count="8">
+        <span style="display:inline-flex;align-items:center;gap:32px;padding-right:32px;font-weight:800;font-size:clamp(40px,6vw,96px);letter-spacing:-.03em;font-variation-settings:'wdth' 80;color:transparent;-webkit-text-stroke:1px #333;white-space:nowrap">HABILIDADES<span style="width:.18em;height:.18em;background:var(--ac,#E31C1C);display:inline-block"></span></span>
+      </sc-for>
+    </div>
+  </div>
+  <div style="padding:0 clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,80px);align-items:flex-start">
+    <ol style="list-style:none;margin:0;padding:0;flex:1.2 1 460px;min-width:0;border-bottom:1px solid #262626">
+      <sc-for list="{{ skills }}" as="s" hint-placeholder-count="5">
+        <li data-cursor="1" onMouseEnter="{{ s.select }}" onClick="{{ s.select }}" style="display:flex;align-items:center;gap:20px;padding:clamp(18px,2.2vw,28px) 0;border-top:1px solid #262626;cursor:pointer">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;color:{{ s.numColor }};width:24px;flex:none;transition:color .3s">{{ s.n }}</span>
+          <span style="flex:1;font-weight:700;font-size:clamp(24px,3.2vw,48px);line-height:1;letter-spacing:-.025em;font-variation-settings:'wdth' 85;color:{{ s.color }};transform:{{ s.shift }};transition:color .3s,transform .5s cubic-bezier(.16,1,.3,1)">{{ s.t }}</span>
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:16px;color:{{ s.color }};opacity:{{ s.arrow }};transition:opacity .3s">→</span>
+        </li>
+      </sc-for>
+    </ol>
+    <div style="flex:1 1 340px;min-width:0;position:sticky;top:100px;background:#141414;border:1px solid #262626;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c"><span><span style="color:var(--ac,#E31C1C)">{{ cur.n }}</span> / 05</span><span>{{ cur.count }}</span></div>
+      <h3 style="margin:0;font-weight:800;font-size:clamp(28px,2.8vw,40px);line-height:1.02;letter-spacing:-.02em;font-variation-settings:'wdth' 85">{{ cur.t }}</h3>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+        <sc-for list="{{ cur.items }}" as="it" hint-placeholder-count="4">
+          <li style="display:flex;gap:14px;align-items:center;padding:14px 0;border-top:1px solid #262626;font-size:17px;color:#e3dfda"><span style="width:7px;height:7px;background:var(--ac,#E31C1C);flex:none"></span>{{ it }}</li>
+        </sc-for>
+      </ul>
+      <div style="height:2px;background:#262626;position:relative;overflow:hidden"><div style="position:absolute;left:0;top:0;bottom:0;background:var(--ac,#E31C1C);transition:width .6s cubic-bezier(.16,1,.3,1);width:{{ cur.progress }}"></div></div>
+    </div>
+  </div>
+
+  <div style="padding:clamp(72px,9vw,140px) clamp(20px,4vw,56px) 0">
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c;margin-bottom:24px">FORTALEZAS</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+      <sc-for list="{{ strengths }}" as="f" hint-placeholder-count="3">
+        <div data-reveal="1">
+          <div style="height:100%;border:1px solid #262626;padding:clamp(24px,2.5vw,36px);display:flex;flex-direction:column;gap:18px;transition:border-color .3s,transform .5s cubic-bezier(.16,1,.3,1),background .3s" style-hover="border-color:var(--ac,#E31C1C);transform:translateY(-6px);background:#141414">
+            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:13px;color:var(--ac,#E31C1C)">{{ f.n }}</span>
+            <h4 style="margin:0;font-weight:800;font-size:clamp(24px,2.2vw,32px);letter-spacing:-.02em;font-variation-settings:'wdth' 85;line-height:1.05">{{ f.t }}</h4>
+            <p style="margin:0;font-size:16px;line-height:1.55;color:#bdb8b2;text-wrap:pretty">{{ f.d }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="herramientas" data-screen-label="03 Herramientas" data-sec="03 — HERRAMIENTAS" data-accent="#FFCC00" style="padding:clamp(60px,8vw,120px) clamp(20px,4vw,56px)">
+  <div style="display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c;border-top:1px solid #262626;padding-top:20px"><span style="color:var(--ac,#E31C1C)">03</span><span>10 PROGRAMAS</span></div>
+  <h2 data-reveal="1" style="margin:16px 0 clamp(40px,5vw,72px);font-weight:800;font-size:clamp(44px,7vw,120px);line-height:.9;letter-spacing:-.04em;font-variation-settings:'wdth' 80">PROGRAMAS QUE USO</h2>
+  <div style="display:grid;grid-template-columns:{{ toolCols }};border-top:1px solid #262626;border-left:1px solid #262626">
+    <sc-for list="{{ tools }}" as="t" hint-placeholder-count="10">
+      <div data-cursor="1" onMouseEnter="{{ t.enter }}" onMouseLeave="{{ t.leave }}" style="border-right:1px solid #262626;border-bottom:1px solid #262626;padding:24px;display:flex;flex-direction:column;gap:28px;min-height:190px;transition:background .3s;background:{{ t.bg }}">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span style="width:60px;height:60px;display:flex;align-items:center;justify-content:center;padding:11px;transition:border-color .3s,transform .5s cubic-bezier(.16,1,.3,1);border:1px solid {{ t.boxBorder }};transform:{{ t.lift }}"><span role="img" aria-label="{{ t.name }}" style="display:block;width:100%;height:100%;background-repeat:no-repeat;background-position:center;background-size:contain;transition:filter .4s;background-image:{{ t.bgImg }};filter:{{ t.filter }};image-rendering:{{ t.render }}"></span></span>
+        </div>
+        <div style="margin-top:auto">
+          <div style="font-weight:700;font-size:20px;letter-spacing:-.01em">{{ t.name }}</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;letter-spacing:.06em;color:#9a9a9a;margin-top:6px">{{ t.cat }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="estudios" data-screen-label="04 Estudios" data-sec="04 — ESTUDIOS" data-accent="#319B44" style="padding:clamp(60px,8vw,120px) clamp(20px,4vw,56px)">
+  <div style="display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c;border-top:1px solid #262626;padding-top:20px"><span style="color:var(--ac,#E31C1C)">04</span><span>SOBRE MÍ</span></div>
+  <h2 data-reveal="1" style="margin:16px 0 clamp(40px,5vw,72px);font-weight:800;font-size:clamp(44px,7vw,120px);line-height:.9;letter-spacing:-.04em;font-variation-settings:'wdth' 80">ESTUDIOS</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,96px);align-items:stretch">
+    <div style="display:flex;flex-direction:column;justify-content:space-between;gap:clamp(40px,5vw,72px);min-width:0">
+      <p data-reveal="1" style="margin:0;font-weight:600;font-size:clamp(30px,3.6vw,56px);line-height:1.18;letter-spacing:-.02em;text-wrap:pretty">Estudiante de Creación Digital.<br><span style="color:#8c8c8c">Integro la creatividad visual y el desarrollo tecnológico para transformar ideas en experiencias digitales funcionales.</span></p>
+      <div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c;margin-bottom:12px">FORMACIÓN</div>
+        <ol style="list-style:none;margin:0;padding:0;border-bottom:1px solid #262626">
+          <sc-for list="{{ studies }}" as="e" hint-placeholder-count="1">
+            <li data-reveal="1" style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding:28px 0;border-top:1px solid #262626">
+              <div><div style="font-weight:700;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.015em">{{ e.t }}</div><div style="font-size:16px;color:#9a9a9a;margin-top:8px">{{ e.s }}</div></div>
+              <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:14px;letter-spacing:.06em;color:var(--ac,#E31C1C);white-space:nowrap">{{ e.y }}</span>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </div>
+    <div data-reveal="1" style="display:flex;justify-content:flex-end;min-width:0">
+      <div data-tilt="1" data-cursor="1" onMouseEnter="{{ phAboutIn }}" onMouseLeave="{{ phOut }}" style="width:100%;max-width:440px;position:relative;aspect-ratio:464/587;overflow:hidden;background:#141414;border:1px solid #262626;will-change:transform;transition:transform .6s cubic-bezier(.16,1,.3,1)">
+        <img src="assets/foto-estudios.png" alt="Juan Sebastian" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:filter .7s ease,transform 1.1s cubic-bezier(.16,1,.3,1);filter:{{ phAbout.filter }};transform:{{ phAbout.scale }}">
+        <div style="position:absolute;inset:0;background:var(--ac,#E31C1C);mix-blend-mode:multiply;transition:opacity .7s;opacity:{{ phAbout.tint }}"></div>
+        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(13,13,13,.55) 1px,transparent 1.4px);background-size:4px 4px;transition:opacity .7s;opacity:{{ phAbout.grain }}"></div>
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);pointer-events:none"></div>
+        <div style="position:absolute;left:0;right:0;top:0;height:2px;background:var(--ac,#E31C1C);transition:transform .9s cubic-bezier(.16,1,.3,1);transform:{{ phAbout.scan }}"></div>
+        <span style="position:absolute;left:12px;top:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:10px;letter-spacing:.08em;color:#f1efec">JS/002</span>
+        <span style="position:absolute;right:12px;bottom:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:10px;letter-spacing:.08em;color:#f1efec">{{ phAbout.label }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" data-screen-label="05 Contacto" data-sec="05 — CONTACTO" data-accent="#319B44" style="padding:clamp(60px,8vw,120px) 0 0">
+  <div style="padding:0 clamp(20px,4vw,56px)">
+    <div style="display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c;border-top:1px solid #262626;padding-top:20px"><span style="color:var(--ac,#E31C1C)">05</span><span>ABIERTO A PROYECTOS</span></div>
+    <h2 data-reveal="1" style="margin:16px 0 0;font-weight:800;font-size:clamp(44px,7vw,120px);line-height:.9;letter-spacing:-.04em;font-variation-settings:'wdth' 80">HABLEMOS<span style="color:var(--ac,#E31C1C)">.</span></h2>
+  </div>
+  <div style="overflow:hidden;margin:28px 0 clamp(40px,5vw,72px)">
+    <div data-marquee="-1" style="display:flex;width:max-content;will-change:transform">
+      <sc-for list="{{ reps }}" as="r" hint-placeholder-count="8">
+        <span style="display:inline-flex;align-items:center;gap:32px;padding-right:32px;font-weight:800;font-size:clamp(40px,6vw,96px);letter-spacing:-.03em;font-variation-settings:'wdth' 80;color:transparent;-webkit-text-stroke:1px #333;white-space:nowrap">ESCRÍBEME<span style="width:.18em;height:.18em;background:var(--ac,#E31C1C);display:inline-block"></span></span>
+      </sc-for>
+    </div>
+  </div>
+  <div style="padding:0 clamp(20px,4vw,56px) clamp(60px,8vw,120px);display:flex;flex-wrap:wrap;gap:clamp(32px,4vw,64px);align-items:flex-start">
+    <div style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="3">
+        <a href="{{ l.href }}" target="_blank" onClick="{{ l.click }}" style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:22px 0;border-top:1px solid #262626;color:#f1efec" style-hover="color:var(--ac,#E31C1C)">
+          <span><span style="display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;letter-spacing:.08em;color:#8c8c8c;margin-bottom:8px">{{ l.k }}</span><span style="font-size:clamp(17px,1.5vw,20px);font-weight:600">{{ l.v }}</span></span>
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:16px;letter-spacing:.06em;white-space:nowrap">{{ l.icon }}</span>
+        </a>
+      </sc-for>
+    </div>
+
+    <div onClick="{{ focusMsg }}" style="flex:2 1 520px;min-width:0;background:#141414;border:1px solid {{ cardBorder }};transition:border-color .3s;padding:clamp(24px,3.5vw,48px);display:flex;flex-direction:column;gap:20px;cursor:text">
+      <div style="display:flex;justify-content:space-between;gap:12px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;letter-spacing:.08em;color:#8c8c8c"><span>PARA: JUAN SEBASTIAN</span><span>{{ charCount }}</span></div>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-weight:700;font-size:clamp(28px,3.4vw,52px);letter-spacing:-.025em;line-height:1.1;font-variation-settings:'wdth' 85">Hola Juan Sebastian,</div>
+          <textarea ref="{{ msgRef }}" value="{{ msg }}" onChange="{{ onMsg }}" onFocus="{{ onFocus }}" onBlur="{{ onBlur }}" maxLength="1000" rows="3" placeholder="Haz clic y empieza a escribir…" style="width:100%;resize:none;overflow:hidden;background:transparent;border:none;outline:none;color:#f1efec;caret-color:var(--ac,#E31C1C);font-family:'Archivo',sans-serif;font-weight:400;font-size:clamp(22px,2.4vw,34px);line-height:1.3;letter-spacing:-.01em;padding:0;min-height:130px"></textarea>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;border-top:1px solid #262626;padding-top:20px">
+          <label style="flex:1 1 180px;display:flex;flex-direction:column;gap:6px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;letter-spacing:.08em;color:#8c8c8c">— TU NOMBRE
+            <input value="{{ name }}" onChange="{{ onName }}" placeholder="Nombre" style="background:transparent;border:none;border-bottom:1px solid #333;outline:none;color:#f1efec;font-family:'Archivo',sans-serif;font-size:18px;padding:8px 0;caret-color:var(--ac,#E31C1C)">
+          </label>
+          <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;letter-spacing:.08em;color:#8c8c8c">TU CORREO
+            <input value="{{ mail }}" onChange="{{ onMail }}" type="email" placeholder="tu@correo.com" style="background:transparent;border:none;border-bottom:1px solid #333;outline:none;color:#f1efec;font-family:'Archivo',sans-serif;font-size:18px;padding:8px 0;caret-color:var(--ac,#E31C1C)">
+          </label>
+          <button onClick="{{ send }}" data-magnet="1" style="flex:none;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--ac,#E31C1C);font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:13px;letter-spacing:.1em;padding:18px 28px;transition:background .25s,color .25s;background:{{ sendBg }};color:{{ sendColor }}" style-hover="background:var(--ac,#E31C1C);color:var(--aci,#fff)"><span style="width:6px;height:6px;background:var(--ac,#E31C1C);border-radius:50%;box-shadow:0 0 0 3px color-mix(in srgb,var(--ac,#E31C1C) 25%,transparent)"></span>ENVIAR ↗</button>
+        </div>
+        <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;color:#ff5a5a">{{ err }}</div>
+        </sc-if>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:20px;padding:20px 0">
+          <div style="width:56px;height:56px;background:var(--ac,#E31C1C);display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--aci,#fff)">✓</div>
+          <div style="font-weight:800;font-size:clamp(28px,3.4vw,52px);letter-spacing:-.025em;line-height:1.05;font-variation-settings:'wdth' 85">Mensaje listo.</div>
+          <p style="margin:0;font-size:18px;line-height:1.5;color:#bdb8b2;max-width:480px">Se abrió tu cliente de correo con el mensaje escrito. Gracias por escribir, te responderé pronto.</p>
+          <button onClick="{{ reset }}" style="align-self:flex-start;background:none;border:1px solid #333;color:#f1efec;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.1em;padding:14px 20px" style-hover="border-color:var(--ac,#E31C1C)">ESCRIBIR OTRO ↺</button>
+        </div>
+      </sc-if>
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;letter-spacing:.06em;color:#7a7a7a">ABRE TU CLIENTE DE CORREO — O ESCRIBE DIRECTO A {{ email }}</div>
+    </div>
+  </div>
+
+  <footer style="border-top:1px solid #1d1d1d;padding:24px clamp(20px,4vw,56px) 64px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c">
+    <span>© 2026 JUAN SEBASTIAN RANGEL GONZALEZ</span>
+        <button onClick="{{ toTop }}" style="background:none;border:none;color:#f1efec;font:inherit;letter-spacing:inherit;padding:0" style-hover="color:var(--ac,#E31C1C)">VOLVER ARRIBA ↑</button>
+  </footer>
+</section>
+
+<sc-if value="{{ hud }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:16px;z-index:40;display:flex;justify-content:space-between;pointer-events:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;letter-spacing:.08em;color:#8c8c8c;mix-blend-mode:difference">
+    <span>SCRL <span data-hud="scrl" style="color:#f1efec">0.00</span>  CRSR <span data-hud="crsr" style="color:#f1efec">0.000</span> — <span data-hud="sec" style="color:var(--ac,#E31C1C)">INICIO</span></span>
+    <span>BOG <span data-hud="clock" style="color:#f1efec">--:--:--</span> −05</span>
+  </div>
+</sc-if>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeP }}" style="position:fixed;inset:0;z-index:60;background:rgba(5,5,5,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:clamp(16px,4vw,56px)">
+    <div onClick="{{ stop }}" style="width:100%;max-width:1100px;background:#0d0d0d;border:1px solid #262626;padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;justify-content:space-between;align-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c">
+        <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span><span style="color:var(--ac,#E31C1C)">{{ pm.idx }}</span> — {{ pm.type }}</span><sc-if value="{{ pm.hasStatus }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:8px;padding:5px 10px;border:1px solid var(--ac,#E31C1C);color:#f1efec"><span data-pulse="1" style="width:6px;height:6px;border-radius:50%;background:var(--ac,#E31C1C)"></span>{{ pm.status }}</span></sc-if></span>
+      </div>
+      <h3 style="margin:0;font-weight:800;font-size:clamp(48px,8vw,120px);line-height:.88;letter-spacing:-.04em;font-variation-settings:'wdth' 78">{{ pm.name }}<span style="color:var(--ac,#E31C1C)">.</span></h3>
+      <div style="display:flex;flex-wrap:wrap;gap:32px">
+        <p style="flex:2 1 360px;margin:0;font-size:clamp(19px,1.7vw,24px);line-height:1.45;color:#e3dfda;text-wrap:pretty">{{ pm.desc }}</p>
+        <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.06em">
+          <span style="color:#8c8c8c">ÁREAS</span>
+          <sc-for list="{{ pm.tags }}" as="tg" hint-placeholder-count="3"><span style="padding:10px 0;border-top:1px solid #262626">{{ tg }}</span></sc-for>
+        </div>
+      </div>
+      <sc-if value="{{ pm.noGallery }}" hint-placeholder-val="{{ false }}">
+      <div style="aspect-ratio:16/9;background:repeating-linear-gradient(135deg,#151515 0 12px,#1a1a1a 12px 24px);border:1px solid #222;position:relative"><span style="position:absolute;left:16px;bottom:14px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;color:#8c8c8c">[ {{ pm.shot }} ]</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+        <div style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#151515 0 12px,#1a1a1a 12px 24px);border:1px solid #222;position:relative"><span style="position:absolute;left:16px;bottom:14px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;color:#8c8c8c">[ wireframes / proceso ]</span></div>
+        <div style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#151515 0 12px,#1a1a1a 12px 24px);border:1px solid #222;position:relative"><span style="position:absolute;left:16px;bottom:14px;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:11px;color:#8c8c8c">[ pantallas finales ]</span></div>
+      </div>
+      </sc-if>
+      <sc-if value="{{ pm.hasGallery }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c"><span>{{ pm.galleryLabel }}</span><span>{{ pm.galleryCount }}</span></div>
+          <sc-for list="{{ pm.gallery }}" as="g" hint-placeholder-count="0">
+            <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+              <div role="img" aria-label="{{ g.cap }}" style="width:100%;border:1px solid #222;background-color:#141414;background-size:cover;background-position:center;background-image:{{ g.img }};aspect-ratio:{{ g.ratio }}"></div>
+              <figcaption style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c">{{ g.cap }}</figcaption>
+            </figure>
+          </sc-for>
+          <sc-if value="{{ pm.hasScreens }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:16px;align-items:start">
+              <sc-for list="{{ pm.screens }}" as="sc" hint-placeholder-count="0">
+                <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+                  <div role="img" aria-label="{{ sc.cap }}" style="width:100%;border:1px solid #222;background-color:#fff;background-size:cover;background-position:center top;background-image:{{ sc.img }};aspect-ratio:{{ sc.ratio }}"></div>
+                  <figcaption style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c">{{ sc.cap }}</figcaption>
+                </figure>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ pm.hasHifi }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c;padding-top:12px"><span>INTERFAZ FINAL</span><span>{{ pm.hifiCount }}</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:16px;align-items:start">
+              <sc-for list="{{ pm.hifi }}" as="hf" hint-placeholder-count="0">
+                <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+                  <div role="img" aria-label="{{ hf.cap }}" style="width:100%;border:1px solid #222;background-color:#16151c;background-size:cover;background-position:center top;background-image:{{ hf.img }};aspect-ratio:{{ hf.ratio }}"></div>
+                  <figcaption style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c">{{ hf.cap }}</figcaption>
+                </figure>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ pm.motion }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c;padding-top:12px"><span>MOTION GRAPHICS WITH CLAUDE</span><span>VIDEO</span></div>
+            <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+              <video src="{{ pm.motion }}" controls="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" aria-label="Motion graphics de Junto" style="width:100%;max-height:70vh;background:#000;border:1px solid #222;display:block"></video>
+              <figcaption style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c">VIDEO · MOTION GRAPHICS WITH CLAUDE</figcaption>
+            </figure>
+          </sc-if>
+          <sc-if value="{{ pm.hasSprites }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c;padding-top:12px"><span>SPRITES · PIXEL ART</span><span>{{ pm.spriteCount }}</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+              <sc-for list="{{ pm.sprites }}" as="sp" hint-placeholder-count="0">
+                <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+                  <div role="img" aria-label="{{ sp.cap }}" style="width:100%;aspect-ratio:1/1;border:1px solid #222;background-color:#141414;background-image:{{ sp.img }};background-size:{{ sp.size }};background-repeat:no-repeat;background-position:center;image-rendering:pixelated"></div>
+                  <figcaption style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c">{{ sp.cap }}</figcaption>
+                </figure>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <sc-if value="{{ pm.hasUnused }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px;padding-top:28px;border-top:1px solid #262626">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+            <span style="font-weight:800;font-size:clamp(28px,3.4vw,48px);letter-spacing:-.025em;font-variation-settings:'wdth' 85">Unused content<span style="color:var(--ac,#E31C1C)">.</span></span>
+            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c">MODELADO 3D · NO INCLUIDO EN LA WEB FINAL</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+            <sc-for list="{{ pm.unused }}" as="u" hint-placeholder-count="0">
+              <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+                <div role="img" aria-label="{{ u.cap }}" style="width:100%;aspect-ratio:4/5;border:1px solid #222;background-color:#1b1f27;background-size:contain;background-repeat:no-repeat;background-position:center;background-image:{{ u.img }}"></div>
+                <figcaption style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c">{{ u.cap }}</figcaption>
+              </figure>
+            </sc-for>
+          </div>
+          <sc-if value="{{ pm.video }}" hint-placeholder-val="{{ false }}">
+            <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+              <video src="{{ pm.video }}" controls="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" style="width:100%;max-height:70vh;background:#000;border:1px solid #222;display:block"></video>
+              <figcaption style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:12px;letter-spacing:.08em;color:#8c8c8c">VIDEO · UNUSED CONTENT</figcaption>
+            </figure>
+            </sc-if>
+      </sc-if>
+        </div>
+      </sc-if>
+      <button onClick="{{ closeP }}" data-magnet="1" style="align-self:flex-end;display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid var(--ac,#E31C1C);color:#f1efec;font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:13px;letter-spacing:.1em;padding:12px 18px;transition:background .25s,color .25s" style-hover="background:var(--ac,#E31C1C);color:var(--aci,#fff)"><span style="width:6px;height:6px;background:var(--ac,#E31C1C);border-radius:50%;box-shadow:0 0 0 3px color-mix(in srgb,var(--ac,#E31C1C) 25%,transparent)"></span>CERRAR ✕</button>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;customCursor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interacción&quot;},&quot;showHud&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interacción&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;sebastianrangel126@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;}}">
+class Component extends DCLogic {
+  state = { act: 0, hovP: -1, hovT: -1, openP: -1, menu: false, mob: false, msg: '', name: '', mail: '', sent: false, err: '', focus: false };
+  msgRef = React.createRef();
+
+  componentDidMount() {
+    this.onResize = () => { const m = window.innerWidth < 1080; const sm = window.innerWidth < 640; if (m !== this.state.mob || sm !== this.state.small) this.setState({ mob: m, small: sm }); };
+    this.onResize(); window.addEventListener('resize', this.onResize);
+
+    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); } }), { threshold: 0.12 });
+    this.scanReveal(); this.applyAccents(); this.setRootAccent('#E31C1C');
+
+    document.querySelectorAll('[data-hero]').forEach((el, i) => {
+      el.style.transform = 'translateY(110%)';
+      el.style.transition = 'transform 1.2s cubic-bezier(.16,1,.3,1) ' + (0.15 + i * 0.14) + 's';
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.style.transform = 'none'; }));
+    });
+
+    this.secIO = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { const h = document.querySelector('[data-hud="sec"]'); if (h) h.textContent = e.target.dataset.sec; }
+    }), { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('[data-sec]').forEach(s => this.secIO.observe(s));
+
+    this.mx = innerWidth / 2; this.my = innerHeight / 2; this.rx = this.mx; this.ry = this.my;
+    this.onMove = e => { this.mx = e.clientX; this.my = e.clientY; };
+    window.addEventListener('mousemove', this.onMove);
+    this.lastY = scrollY; this.vel = 0;
+
+    const fine = window.matchMedia('(pointer:fine)').matches;
+    if ((this.props.customCursor ?? true) && fine) {
+      document.body.classList.add('cc-on');
+      const ring = document.createElement('div'), dot = document.createElement('div');
+      ring.style.cssText = 'position:fixed;left:0;top:0;width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid var(--ac,#E31C1C);border-radius:50%;pointer-events:none;z-index:100;display:flex;align-items:center;justify-content:center;font:300 11px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;color:#fff;transition:width .3s,height .3s,margin .3s,background .3s,opacity .3s';
+      dot.style.cssText = 'position:fixed;left:0;top:0;width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--ac,#E31C1C);border-radius:50%;pointer-events:none;z-index:101;transition:opacity .2s';
+      document.body.append(ring, dot); this.ring = ring; this.dot = dot;
+      this.onOver = e => {
+        const t = e.target.closest && e.target.closest('a,button,[data-cursor],textarea,input');
+        const txt = t && (t.tagName === 'TEXTAREA' || t.tagName === 'INPUT');
+        const lab = t && t.dataset && t.dataset.cursor && t.dataset.cursor !== '1' ? t.dataset.cursor : '';
+        const big = lab ? 84 : (t && !txt ? 58 : 38);
+        ring.style.width = ring.style.height = big + 'px'; ring.style.margin = (-big / 2) + 'px 0 0 ' + (-big / 2) + 'px';
+        ring.style.background = lab ? 'transparent' : (t && !txt ? 'color-mix(in srgb,var(--ac,#E31C1C) 14%,transparent)' : 'transparent');
+        ring.textContent = lab; ring.style.fontSize = lab ? '46px' : '11px'; ring.style.borderColor = lab ? 'transparent' : 'var(--ac,#E31C1C)'; ring.style.opacity = txt ? '0' : '1'; dot.style.opacity = (txt || lab) ? '0' : '1';
+      };
+      document.addEventListener('mouseover', this.onOver);
+    }
+
+    this.probeZone = () => { const p = innerHeight * 0.35; let z = null; document.querySelectorAll('[data-accent]').forEach(el => { const r = el.getBoundingClientRect(); if (r.top <= p && r.bottom > p) z = el.dataset.accent; }); if (z) this.setRootAccent(z); };
+    window.addEventListener('scroll', this.probeZone, { passive: true });
+    this.onScrollReveal = () => { clearTimeout(this.sr); this.sr = setTimeout(() => this.scanReveal(), 120); };
+    window.addEventListener('scroll', this.onScrollReveal, { passive: true });
+    const tick = () => {
+      const y = scrollY; this.vel += (y - this.lastY) * 0.08; this.lastY = y; this.vel *= 0.9;
+      this.rx += (this.mx - this.rx) * 0.18; this.ry += (this.my - this.ry) * 0.18;
+      if (this.ring) { this.ring.style.transform = `translate3d(${this.rx}px,${this.ry}px,0)`; this.dot.style.transform = `translate3d(${this.mx}px,${this.my}px,0)`; }
+      if (!this.mq || this.mqDirty) { this.mq = [...document.querySelectorAll('[data-marquee]')].map(el => ({ el, x: 0, d: +el.dataset.marquee })); this.mqDirty = false; }
+      this.mq.forEach(m => {
+        if (!m.el.isConnected) { this.mqDirty = true; return; }
+        const half = m.el.scrollWidth / 2; if (!half) return;
+        m.x -= (0.6 + Math.abs(this.vel)) * m.d;
+        if (m.x <= -half) m.x += half; if (m.x > 0) m.x -= half;
+        m.el.style.transform = `translate3d(${m.x}px,0,0)`;
+      });
+      const probe = innerHeight * 0.35; let zone = null;
+      document.querySelectorAll('[data-accent]').forEach(el => { const r = el.getBoundingClientRect(); if (r.top <= probe && r.bottom > probe) zone = el.dataset.accent; });
+      if (zone) this.setRootAccent(zone);
+      const pv = 0.45 + 0.55 * Math.abs(Math.sin(performance.now() / 600));
+      document.querySelectorAll('[data-pulse]').forEach(el => { el.style.opacity = pv; });
+      const par = document.querySelector('[data-par]');
+      if (par) par.style.transform = `translate3d(${(this.rx / innerWidth - 0.5) * -24}px,${(this.ry / innerHeight - 0.5) * -12 + y * 0.12}px,0)`;
+      document.querySelectorAll('[data-magnet]').forEach(el => {
+        const r = el.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2, dx = this.mx - cx, dy = this.my - cy;
+        const near = Math.hypot(dx, dy) < Math.max(r.width, r.height) * 0.9;
+        el.style.transform = near ? `translate(${dx * 0.25}px,${dy * 0.25}px)` : '';
+        el.style.transition = (el.style.transition.includes('transform') ? el.style.transition : (el.style.transition ? el.style.transition + ',' : '') + 'transform .4s cubic-bezier(.16,1,.3,1)');
+      });
+      document.querySelectorAll('[data-tilt]').forEach(el => {
+        const r = el.getBoundingClientRect(), inside = this.mx > r.left && this.mx < r.right && this.my > r.top && this.my < r.bottom;
+        el.style.transform = inside ? `perspective(900px) rotateY(${((this.mx - r.left) / r.width - 0.5) * 10}deg) rotateX(${((this.my - r.top) / r.height - 0.5) * -10}deg)` : '';
+      });
+      const s = document.querySelector('[data-hud="scrl"]'), c = document.querySelector('[data-hud="crsr"]');
+      if (s) { const max = document.documentElement.scrollHeight - innerHeight; s.textContent = (max > 0 ? y / max : 0).toFixed(2); }
+      if (c) c.textContent = (this.mx / innerWidth).toFixed(3);
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+
+    const clock = () => { const el = document.querySelector('[data-hud="clock"]'); if (el) el.textContent = new Date().toLocaleTimeString('es-CO', { timeZone: 'America/Bogota', hour12: false }); };
+    clock(); this.clk = setInterval(clock, 1000);
+
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ openP: -1, menu: false }); };
+    window.addEventListener('keydown', this.onKey);
+  }
+
+  componentDidUpdate() { this.scanReveal(); this.applyAccents(); this.mqDirty = true; document.querySelectorAll('[data-sec]').forEach(s => this.secIO && this.secIO.observe(s)); }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf); clearInterval(this.clk); clearTimeout(this.revealSafety);
+    document.querySelectorAll('[data-reveal]').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; delete el.dataset.rv; });
+    window.removeEventListener('resize', this.onResize); window.removeEventListener('mousemove', this.onMove); window.removeEventListener('keydown', this.onKey); window.removeEventListener('scroll', this.onScrollReveal); window.removeEventListener('scroll', this.probeZone);
+    if (this.onOver) document.removeEventListener('mouseover', this.onOver);
+    this.ring && this.ring.remove(); this.dot && this.dot.remove(); document.body.classList.remove('cc-on');
+    this.io && this.io.disconnect(); this.secIO && this.secIO.disconnect();
+  }
+
+  setRootAccent(c) {
+    if (!c || c === this.rootAc) return; this.rootAc = c; const r = document.documentElement.style;
+    r.setProperty('--ac', c); r.setProperty('--aci', c === '#FFCC00' ? '#0d0d0d' : '#fff');
+  }
+  applyAccents() {
+    document.querySelectorAll('[data-accent]').forEach(el => { const c = el.dataset.accent; el.style.setProperty('--ac', c); el.style.setProperty('--aci', c === '#FFCC00' ? '#0d0d0d' : '#fff'); });
+  }
+  scanReveal() {
+    if (!this.io) return;
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.style.opacity === '1') return;
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight * 0.95 && r.bottom > 0 && el.dataset.rv) { el.style.opacity = '1'; el.style.transform = 'none'; return; }
+      if (!el.dataset.rv) { el.dataset.rv = '1'; el.style.opacity = '0'; el.style.transform = 'translateY(40px)'; el.style.transition = 'opacity .9s ease, transform 1s cubic-bezier(.16,1,.3,1)'; }
+      this.io.observe(el);
+    });
+    clearTimeout(this.revealSafety);
+    this.revealSafety = setTimeout(() => document.querySelectorAll('[data-reveal]').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight && el.style.opacity !== '1') { el.style.opacity = '1'; el.style.transform = 'none'; }
+    }), 1500);
+  }
+
+  renderVals() {
+    const st = this.state, email = this.props.contactEmail ?? 'sebastianrangel126@gmail.com';
+    const P = [
+      { idx: '001', status: 'EN PROCESO', type: 'MVP VIDEOJUEGO · SPRITER 2D', name: 'ASCENT:ZERO', desc: 'Sprites en pixel art.', tags: ['ILUSTRACIÓN DIGITAL', 'ANIMACIÓN'], shot: 'captura de Ascent:Zero',
+        cover: 'assets/ascent/ascent-portada.png', coverPos: 'center', coverSize: 'contain', coverBg: '#0b0b10', label: 'VIDEOJUEGO',
+        gallery: [['assets/ascent/ascent-portada.png', '918/510', 'PANTALLA DE INICIO — ASCENT ZERO']],
+        sprites: [['assets/ascent/sprite-personaje.png', '44%', 'PERSONAJE'], ['assets/ascent/sprite-torii.png', '60%', 'TORII'], ['assets/ascent/sprite-letrero.png', '60%', 'LETRERO']] },
+      { idx: '002', status: 'EN PROCESO', type: 'MVP DE APP', name: 'JUNTO', desc: 'Aplicación para creación de eventos o planes universitarios.', tags: ['UX/UI', 'PROTOTIPADO', 'WIREFRAMES', 'FIGMA', 'MOTION GRAPHICS WITH CLAUDE'], shot: 'captura de Junto',
+        cover: 'assets/junto/junto-portada-principal.png', coverPos: 'center', coverSize: 'cover', coverBg: '#ffffff', label: 'APLICACIÓN MÓVIL · WIREFRAMES',
+        gallery: [['assets/junto/junto-portada-principal.png', '1339/746', 'PORTADA — JUNTO']],
+        motion: 'assets/junto/junto-motion.mp4',
+        screens: [['assets/junto/junto-bienvenida.png', '308/633', 'BIENVENIDA'], ['assets/junto/junto-inicio.png', '307/630', 'INICIO'], ['assets/junto/junto-plan.png', '312/634', 'DETALLE DEL PLAN'], ['assets/junto/junto-calificacion.png', '316/645', 'CALIFICACIÓN']],
+        hifi: [['assets/junto/hifi-registro.png', '355/753', 'REGISTRO'], ['assets/junto/hifi-verificacion.png', '375/768', 'VERIFICACIÓN — PASO 2'], ['assets/junto/hifi-perfil.png', '360/756', 'PERFIL — PASO 3'], ['assets/junto/hifi-inicio.png', '373/779', 'INICIO'], ['assets/junto/hifi-feed.png', '374/780', 'HOY EN EL CAMPUS'], ['assets/junto/hifi-ya-casi.png', '378/773', 'YA CASI'], ['assets/junto/hifi-calificacion.png', '372/758', 'CALIFICACIÓN']] },
+      { idx: '003', type: 'APLICACIÓN · UX/UI', name: 'CRONOS', desc: 'Aplicación de optimización y organización de tiempo.', tags: ['UX/UI', 'PROTOTIPADO', 'WIREFRAMING', 'FIGMA'], shot: 'captura de Cronos',
+        cover: 'assets/cronos/cronos-portada.png', coverPos: 'center', coverSize: 'contain', coverBg: '#1f1f1f',
+        gallery: [['assets/cronos/cronos-portada.png', '864/364', 'PORTADA — CRONOS']],
+        screens: [['assets/cronos/cronos-login.png', '292/650', 'INICIO DE SESIÓN'], ['assets/cronos/cronos-tareas.png', '345/777', 'TAREAS'], ['assets/cronos/cronos-progreso.png', '366/826', 'PROGRESO SEMANAL'], ['assets/cronos/cronos-calendario.png', '315/702', 'CALENDARIO'], ['assets/cronos/cronos-configuracion.png', '308/697', 'CONFIGURACIÓN']] },
+      { idx: '004', type: 'DISEÑO WEB · CONCURSO', name: 'GLOBAL SEGUROS', desc: 'Diseño web para la empresa Global Seguros en concurso.', tags: ['DISEÑO WEB', 'UI', 'PROTOTIPADO'], shot: 'captura de Global Seguros',
+        cover: 'assets/global/gs-portada.png', coverPos: 'center top',
+        gallery: [['assets/global/gs-portada.png', '1435/857', 'PORTADA — SEGUROS EDUCATIVOS'], ['assets/global/gs-hero-fluye.png', '1432/832', 'HOME — SEGURIDAD QUE FLUYE CONTIGO'], ['assets/global/gs-estrategia.png', '1431/769', 'SECCIÓN — ESTRATEGIA UNIVERSITARIA'], ['assets/global/gs-planes.png', '1403/1076', 'PLANES PREGRADO']],
+        unused: [['assets/global/unused-3d-a.png', 'PERSONAJE 3D — VISTA 3/4'], ['assets/global/unused-3d-rig.png', 'PERSONAJE 3D — RIG / ESQUELETO'], ['assets/global/unused-3d-front.png', 'PERSONAJE 3D MEJORADO — VISTA FRONTAL']],
+        video: 'assets/global/unused-video.mp4' }
+    ];
+    const projects = P.map((p, i) => {
+      const h = st.hovP === i;
+      return { ...p, hasStatus: !!p.status, status: p.status || '', coverPos: p.coverPos || 'center', coverSize: p.coverSize || 'cover', coverBg: p.coverBg || 'transparent', coverImg: p.cover ? "url('" + p.cover + "')" : 'none', noCover: !p.cover, coverFilter: p.cover ? (h ? 'none' : 'grayscale(.35) brightness(.85)') : 'none', titleColor: h ? 'var(--ac,#E31C1C)' : '#f1efec', titleShift: h ? 'translateX(14px)' : 'none', imgScale: h ? 'scale(1.06)' : 'scale(1)', tint: h ? 0.35 : 0,
+        enter: () => this.setState({ hovP: i }), leave: () => this.setState({ hovP: -1 }), open: () => this.setState({ openP: i }) };
+    });
+    const S = [
+      { n: '01', t: 'Diseño y UI/UX', items: ['Diseño de interfaces', 'Experiencia de usuario (UX/UI)', 'Prototipado', 'Wireframing', 'Diseño de marca / identidad visual', 'Ilustración digital'] },
+      { n: '02', t: 'Producción Audiovisual y Edición', items: ['Edición de video', 'Transmisión en directo (streaming)', 'Grabación y producción de video'] },
+      { n: '03', t: 'Modelado 3D', items: ['Modelado tridimensional', 'Renderizado', 'Texturizado'] },
+      { n: '04', t: 'Desarrollo y Programación', items: ['Desarrollo con tecnologías web estándar', 'Lógica de programación'] },
+      { n: '05', t: 'Habilidades Blandas', items: ['Resolución de problemas', 'Pensamiento visual', 'Adaptabilidad'] }
+    ];
+    const skills = S.map((s, i) => {
+      const a = st.act === i;
+      return { ...s, color: a ? 'var(--ac,#E31C1C)' : '#f1efec', numColor: a ? 'var(--ac,#E31C1C)' : '#8c8c8c', shift: a ? 'translateX(14px)' : 'none', arrow: a ? 1 : 0, select: () => this.setState({ act: i }) };
+    });
+    const c = S[st.act];
+    const cur = { ...c, count: c.items.length + (c.items.length === 1 ? ' COMPETENCIA' : ' COMPETENCIAS'), progress: ((st.act + 1) / S.length * 100) + '%' };
+    const T = [
+      ['Figma', 'figma.svg', 'DISEÑO UI · PROTOTIPADO'], ['Photoshop', 'ps.svg', 'EDICIÓN DE IMAGEN'], ['Illustrator', 'ai.svg', 'VECTOR · ILUSTRACIÓN'], ['Affinity', 'affinity.png', 'DISEÑO GRÁFICO'], ['Manabit', 'manabit.png', 'PIXEL ART · ANIMACIÓN'],
+      ['DaVinci Resolve', 'davinci.png', 'EDICIÓN · COLOR'], ['CapCut', 'capcut.svg', 'EDICIÓN DE VIDEO'], ['OBS Studio', 'obs_si.svg', 'STREAMING · GRABACIÓN'], ['Blender', 'blender.png', 'MODELADO 3D · RENDER'], ['Visual Studio Code', 'vscode.svg', 'HTML5 · CSS · JAVASCRIPT']
+    ];
+    const tools = T.map(([name, file, cat], i) => {
+      const h = st.hovT === i, png = file.endsWith('.png');
+      return { name, cat, bgImg: "url('assets/logos/" + file + "')", render: file === 'manabit.png' ? 'pixelated' : 'auto', lift: h ? 'translateY(-4px)' : 'none',
+        filter: h ? 'none' : (png ? 'grayscale(1) brightness(1.1)' : 'grayscale(1) brightness(1.6)'), bg: h ? '#141414' : 'transparent', boxBorder: h ? 'var(--ac,#E31C1C)' : '#333', boxBg: h ? 'var(--ac,#E31C1C)' : 'transparent', boxColor: h ? 'var(--aci,#fff)' : '#f1efec',
+        enter: () => this.setState({ hovT: i }), leave: () => this.setState({ hovT: -1 }) };
+    });
+    const pm0 = st.openP >= 0 ? P[st.openP] : P[0];
+    const pm = { ...pm0, hasGallery: !!pm0.gallery, noGallery: !pm0.gallery, video: pm0.video || '', motion: pm0.motion || '',
+      hasStatus: !!pm0.status, status: pm0.status || '', hasUnused: !!pm0.unused, hasScreens: !!pm0.screens,
+      galleryLabel: pm0.label || (pm0.screens ? 'APLICACIÓN MÓVIL' : 'DISEÑO WEB'),
+      galleryCount: pm0.gallery ? (n => n + (n === 1 ? ' PANTALLA' : ' PANTALLAS'))(pm0.gallery.length + (pm0.screens ? pm0.screens.length : 0)) : '',
+      hasHifi: !!pm0.hifi, hifiCount: pm0.hifi ? pm0.hifi.length + ' PANTALLAS' : '',
+      hifi: (pm0.hifi || []).map(([file, ratio, cap]) => ({ img: "url('" + file + "')", ratio, cap })),
+      hasSprites: !!pm0.sprites, spriteCount: pm0.sprites ? pm0.sprites.length + ' SPRITES' : '',
+      sprites: (pm0.sprites || []).map(([file, size, cap]) => ({ img: "url('" + file + "')", size: 'auto ' + size, cap })),
+      gallery: (pm0.gallery || []).map(([file, ratio, cap]) => ({ img: "url('" + file + "')", ratio, cap })),
+      screens: (pm0.screens || []).map(([file, ratio, cap]) => ({ img: "url('" + file + "')", ratio, cap })),
+      unused: (pm0.unused || []).map(([file, cap]) => ({ img: "url('" + file + "')", cap })) };
+    const has = st.msg.trim().length > 0;
+    const send = e => {
+      e && e.stopPropagation();
+      if (!has) return this.setState({ err: 'Escribe tu mensaje antes de enviar.' });
+      if (st.mail && !/^\S+@\S+\.\S+$/.test(st.mail)) return this.setState({ err: 'Revisa el formato de tu correo.' });
+      const body = `Hola Juan Sebastian,\n\n${st.msg}\n\n— ${st.name || 'Sin nombre'}${st.mail ? ' (' + st.mail + ')' : ''}`;
+      const subj = 'Contacto desde el portafolio' + (st.name ? ' — ' + st.name : '');
+      window.open(`mailto:${email}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`, '_blank');
+      this.setState({ sent: true, err: '' });
+    };
+    const tools2 = T.map(t => t[0].toUpperCase());
+    const ph = on => ({ filter: on ? 'grayscale(0) contrast(1.05)' : 'grayscale(1) contrast(1.25) brightness(.9)', scale: on ? 'scale(1.06)' : 'scale(1)', tint: on ? 0 : 0.55, grain: on ? 0 : 1, scan: on ? 'translateY(2000%)' : 'translateY(0)', label: on ? 'COLOR ●' : 'B/N ○' });
+    return {
+      phHero: ph(st.ph === 'hero'), phAbout: ph(st.ph === 'about'),
+      phHeroIn: () => this.setState({ ph: 'hero' }), phAboutIn: () => this.setState({ ph: 'about' }), phOut: () => this.setState({ ph: '' }),
+      heroWrap: st.small ? 'wrap' : 'nowrap', toolCols: st.small ? 'repeat(2,minmax(0,1fr))' : 'repeat(5,minmax(0,1fr))',
+      mob: st.mob, desktop: !st.mob, menuOpen: st.menu && st.mob, menuLabel: st.menu ? 'CERRAR' : 'MENÚ',
+      toggleMenu: () => this.setState({ menu: !st.menu }), closeMenu: () => this.setState({ menu: false }),
+      navItems: [['#proyectos', '01', 'PROYECTOS'], ['#habilidades', '02', 'HABILIDADES'], ['#herramientas', '03', 'HERRAMIENTAS'], ['#estudios', '04', 'ESTUDIOS'], ['#contacto', '05', 'CONTACTO']].map(([href, num, label]) => ({ href, num, label })),
+      marqueeTools: [...tools2, ...tools2],
+      reps: [0, 1, 2, 3, 4, 5, 6, 7],
+      projects, skills, cur, tools,
+      strengths: [
+        { n: '01', t: 'Versatilidad multimedia', d: 'Dominio fluido tanto de herramientas de diseño gráfico y UI como de software de edición de video y desarrollo.' },
+        { n: '02', t: 'Atención al detalle', d: 'Enfoque centrado en la usabilidad y la estética visual en cada entrega.' },
+        { n: '03', t: 'Aprendizaje rápido', d: 'Facilidad para dominar nuevas herramientas tecnológicas y su adaptación.' }
+      ],
+      studies: [{ t: 'Creación Digital', s: 'Estudiante — en curso', y: '2025 —' }],
+      links: [
+        { k: 'EMAIL', v: email, href: 'mailto:' + email, icon: '↗', click: () => {} },
+        { k: 'DISCORD', v: 'souluck', href: '#contacto', icon: st.copied ? 'COPIADO ✓' : 'COPIAR', click: e => { e.preventDefault(); navigator.clipboard && navigator.clipboard.writeText('souluck'); this.setState({ copied: true }); clearTimeout(this.cpT); this.cpT = setTimeout(() => this.setState({ copied: false }), 1800); } }
+      ],
+      email, hud: (this.props.showHud ?? true) && !st.mob,
+      modalOpen: st.openP >= 0, pm,
+      closeP: () => this.setState({ openP: -1 }), stop: e => e.stopPropagation(),
+      nextP: () => this.setState({ openP: (st.openP + 1) % P.length }),
+      msg: st.msg, name: st.name, mail: st.mail, err: st.err, sent: st.sent, notSent: !st.sent,
+      msgRef: this.msgRef,
+      onMsg: e => { const t = e.target; t.style.height = 'auto'; t.style.height = t.scrollHeight + 'px'; this.setState({ msg: t.value, err: '' }); },
+      onName: e => this.setState({ name: e.target.value }), onMail: e => this.setState({ mail: e.target.value, err: '' }),
+      onFocus: () => this.setState({ focus: true }), onBlur: () => this.setState({ focus: false }),
+      focusMsg: e => { if (e.target.closest('input,button,textarea')) return; this.msgRef.current && this.msgRef.current.focus(); },
+      cardBorder: st.focus ? 'var(--ac,#E31C1C)' : '#262626',
+      charCount: st.msg.length + ' / 1000',
+      sendBg: has ? 'var(--ac,#E31C1C)' : 'transparent', sendColor: has ? 'var(--aci,#fff)' : 'var(--ac,#E31C1C)',
+      send, reset: e => { e.stopPropagation(); this.setState({ sent: false, msg: '', name: '', mail: '' }); },
+      toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' })
+    };
+  }
+}
+</script>
+</body>
+</html>
